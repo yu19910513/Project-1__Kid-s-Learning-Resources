@@ -1,0 +1,808 @@
+h1 {
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-weight: bolder;
+    font-size: 5em;
+    font-family: 'Cabin Sketch', cursive;
+}
+
+body {
+    background-color: black;
+}
+
+#map {
+    max-height: 800px;
+    width: auto;
+    border-radius: 2em;
+}
+
+h2 {
+    text-align: center;
+    background-color: black;
+    color: yellow;
+    font-weight: bold;
+    font-size: 5em;
+    font-family: 'Cabin Sketch', cursive;
+}
+
+button:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+}
+
+.dropdown {
+    height: 100px;
+}
+
+#state-dropdown {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 1.5em;
+    background-color: black;
+    border-radius: 1em;
+    margin-top: 1em;
+}
+
+#state-dropdown:hover {
+    border: thick dashed yellow;
+}
+
+button {
+    font-family: 'Cabin Sketch', cursive;
+}
+
+#alabama:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+/*
+#alabama::after {
+    content: "hello";
+} */
+#alabama {
+    background-image: url("/assets/images/alabama-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#alaska:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#alaska {
+    background-image: url("/assets/images/alaska-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#arizona:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#arizona {
+    background-image: url("/assets/images/arizona-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#arkansas:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#arkansas {
+    background-image: url("/assets/images/arkansas-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#california:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#california {
+    background-image: url("/assets/images/california-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#colorado:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#colorado {
+    background-image: url("/assets/images/colorado-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#connecticut:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#connecticut {
+    background-image: url("/assets/images/connecticut-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#delaware:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#delaware {
+    background-image: url("/assets/images/delaware-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#florida:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#florida {
+    background-image: url("/assets/images/florida-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#georgia:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#georgia {
+    background-image: url("/assets/images/georgia-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#hawaii:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#hawaii {
+    background-image: url("/assets/images/hawaii-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#idaho:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#idaho {
+    background-image: url("/assets/images/idaho-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#illinois:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#illinois {
+    background-image: url("/assets/images/illinois-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#indiana:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#indiana {
+    background-image: url("/assets/images/indiana-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#iowa:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#iowa {
+    background-image: url("/assets/images/iowa-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#kansas:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#kansas {
+    background-image: url("/assets/images/kansas-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#kentucky:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#kentucky {
+    background-image: url("/assets/images/kentucky-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#louisiana:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#louisiana {
+    background-image: url("/assets/images/louisiana-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#maine:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#maine {
+    background-image: url("/assets/images/maine-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#maryland:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#maryland {
+    background-image: url("/assets/images/maryland-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#massachusetts:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#massachusetts {
+    background-image: url("/assets/images/massachusetts-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#michigan:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#michigan {
+    background-image: url("/assets/images/michigan-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#minnesota:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#minnesota {
+    background-image: url("/assets/images/minnesota-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#mississippi:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#mississippi {
+    background-image: url("/assets/images/mississippi-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#missouri:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#missouri {
+    background-image: url("/assets/images/missouri-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#montana:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#montana {
+    background-image: url("/assets/images/montana-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#nebraska:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#nebraska {
+    background-image: url("/assets/images/nebraska-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#nevada:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#nevada {
+    background-image: url("/assets/images/nevada-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#new-hampshire:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#new-hampshire {
+    background-image: url("/assets/images/new-hampshire-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#new-jersey:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#new-jersey {
+    background-image: url("/assets/images/new-jersey-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#new-mexico:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#new-mexico {
+    background-image: url("/assets/images/new-mexico-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#new-york:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#new-york {
+    background-image: url("/assets/images/new-york-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#north-carolina:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#north-carolina {
+    background-image: url("/assets/images/north-carolina-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#north-dakota:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#north-dakota {
+    background-image: url("/assets/images/north-dakota-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#ohio:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#ohio {
+    background-image: url("/assets/images/ohio-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#oklahoma:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#oklahoma {
+    background-image: url("/assets/images/oklahoma-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#oregon:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#oregon {
+    background-image: url("/assets/images/oregon-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#pennsylvania:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#pennsylvania {
+    background-image: url("/assets/images/pennsylvania-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#rhode-island:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#rhode-island {
+    background-image: url("/assets/images/rhode-island-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#south-carolina:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#south-carolina {
+    background-image: url("/assets/images/south-carolina-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#south-dakota:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#south-dakota {
+    background-image: url("/assets/images/south-dakota-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#tennessee:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#tennessee {
+    background-image: url("/assets/images/tennessee-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#texas:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#texas {
+    background-image: url("/assets/images/texas-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#utah:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#utah {
+    background-image: url("/assets/images/utah-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#vermont:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#vermont {
+    background-image: url("/assets/images/vermont-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#virginia:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#virginia {
+    background-image: url("/assets/images/virginia-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#washington:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#washington {
+    background-image: url("/assets/images/washington-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#west-virginia:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#west-virginia {
+    background-image: url("/assets/images/west-virginia-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#wisconsin:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#wisconsin {
+    background-image: url("/assets/images/wisconsin-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
+#wyoming:hover {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
+    background-image: none;
+    color: white;
+}
+#wyoming {
+    background-image: url("/assets/images/wyoming-flag-small.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+    background-color: black;
+}
