@@ -91,7 +91,7 @@ button {
 }
 
 #alabama {
-    background-image: url("/assets/images/alabama-flag-small\ copy.png");
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Alabama.svg/2560px-Flag_of_Alabama.svg.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
