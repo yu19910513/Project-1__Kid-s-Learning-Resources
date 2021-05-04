@@ -1,7 +1,7 @@
 h1 {
     text-align: center;
     background-color: black;
-    color: white;
+    color: yellow;
     font-weight: bolder;
     font-size: 5em;
     font-family: 'Cabin Sketch', cursive;
@@ -26,6 +26,34 @@ h2 {
     font-family: 'Cabin Sketch', cursive;
 }
 
+p {
+    font-size: 1.5em;
+    font-family: 'Cabin Sketch', cursive;
+    color: white;
+    text-align: center;
+}
+
+.passport{
+    color: black;
+}
+
+.footer button{
+    color: white;
+    background-color: black;
+    font-size: 1em;
+    font-family: 'Cabin Sketch', cursive;
+}
+
+.footer a{
+    color: white;
+}
+.footer button:hover{
+    color: white;
+    background-color: black;
+    font-family: 'Cabin Sketch', cursive;
+    border: thick dashed yellow;
+}
+
 button:hover {
     font-family: 'Cabin Sketch', cursive;
     font-size: 2em;
@@ -33,18 +61,20 @@ button:hover {
 }
 
 .dropdown {
-    height: 100px;
-}
-
-#state-dropdown {
-    font-family: 'Cabin Sketch', cursive;
-    font-size: 1.5em;
+    color: white;
     background-color: black;
-    border-radius: 1em;
-    margin-top: 1em;
+    font-family: 'Cabin Sketch', cursive;
 }
 
-#state-dropdown:hover {
+.state-dropdown {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 1em;
+    background-color: black;
+    border-radius: 3em;
+    color: white;
+}
+
+.state-dropdown:hover {
     border: thick dashed yellow;
 }
 
@@ -59,10 +89,7 @@ button {
     background-image: none;
     color: white;
 }
-/*
-#alabama::after {
-    content: "hello";
-} */
+
 #alabama {
     background-image: url("/assets/images/alabama-flag-small.png");
     background-size: contain;
