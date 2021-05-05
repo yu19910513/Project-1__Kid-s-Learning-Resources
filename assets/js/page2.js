@@ -300,14 +300,35 @@ $(".gobackbtn").on("click", function () {
           var wikiEl = doc1.querySelector("body > div > table.wikitable.plainrowheaders.sortable");
           var rows = wikiEl.querySelectorAll("tr");
           for (i = 1; i < rows.length; i++) {
-            if (rows[i].cells[0].textContent.trim() === stateName)
+            if (rows[i].cells[0].textContent.trim() === stateName){
               capitalName = rows[i].cells[1].textContent;
-              stateCapitalEl.textContent = capitalName;
-            }
-            weather(capitalName);
-            getTimeZone(capitalName);
-          });
-    }
+              stateCapitalEl.textContent = capitalName}
+          }
+          if (stateName == 'Maine'){
+              weatherZip()
+            } else {
+              weather(capitalName);
+              getTimeZone(capitalName);
+          }
+
+        })
+    };
+
+    /// for our speical MAINE problem
+    function weatherZip() {
+      var url = "https://api.openweathermap.org/data/2.5/weather?zip=04330,us&appid=c24b1e69b12182932011de7f1b2d7c83";
+      fetch(url)
+      .then(function (response) {
+          return response.json();
+      })
+      .then(function (data) {
+      generalInfo(data);
+      var timeZone = data.timezone;
+      getTime(timeZone);
+      });
+    };
+
+
 
     function getStateNickName(stateName, fact) {
       fetch(
@@ -344,7 +365,7 @@ var sun = "☀️";
 var cloud = "🌥";
 var snow = "🌨";
 
-function weather() {
+function weather(capitalName) {
         var url =
         "https://api.openweathermap.org/data/2.5/weather?q=" +
         capitalName +
