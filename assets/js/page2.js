@@ -1,12 +1,10 @@
-//added in gunjan's cards; fixed the duplicated state info by adding in returns and breaking the picture function out into another; removed console.logs
-
 // Event listener for page 2 Go Back button
-$('.gobackbtn').on("click", function() {
-      window.location.href = 'index.html';
-    })
+$(".gobackbtn").on("click", function () {
+      window.location.href = "index.html";
+    });
 
     //Variables for page 2
-    var stateName = '';
+    var stateName = "";
     var flowerName;
     var butterflyName;
     var birdName;
@@ -44,11 +42,10 @@ $('.gobackbtn').on("click", function() {
     function startCollectingData() {
       stateName = localStorage.getItem("stateVisited");
       getInfo(stateName, symbols[index]);
-    };
-
+    }
 
     function getInfo() {
-      var stateName = localStorage.getItem('stateVisited');
+      stateName = localStorage.getItem("stateVisited");
       getStateFlower(stateName, symbols[0]);
       getStateButterfly(stateName, symbols[1]);
       getStateBird(stateName, symbols[2]);
@@ -57,14 +54,13 @@ $('.gobackbtn').on("click", function() {
       getStateCapital(stateName, symbols[5]);
       getStateNickName(stateName, symbols[6]);
       getStateSummary(stateName);
-      getStateImages (stateName);
-
+      getStateImages(stateName);
     };
 
-    function getStateSummary(){
-      var stateName = localStorage.getItem('stateVisited');
+    function getStateSummary() {
+      stateName = localStorage.getItem("stateVisited");
       if (stateName == 'Washington'){
-      url = "http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=Washington(state)&format=json&origin=*";
+      url ="http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=Washington(state)&format=json&origin=*";
       fetch(url)
       .then(function (response) {
           return response.json();
@@ -123,9 +119,6 @@ $('.gobackbtn').on("click", function() {
     }
     };
 
-    // this fetch pulls in the data for the title (i.e. state name) and the general information about the state and displays it on page 2.
-
-
     function getStateImages (){
       // set the next URL based on the state selected on the first page.
       const url2 = `https://pixabay.com/api?q=${stateName}&key=21438663-60940dce2a3b8f288719617da&lang=en&image_type=all&orientation=horizontal&safesearch=true&per_page=5&category=backgrounds,nature,science,education,places,animals,sports,buildings`;
@@ -136,30 +129,28 @@ $('.gobackbtn').on("click", function() {
           return response.json();
         })
         .then(function (data) {
-          const statePictureListEl = document.getElementById('statePictureList');
+          const statePictureListEl = document.getElementById("statePictureList");
           if (data.hits.length > 0) {
             removeAllChildNodes(statePictureListEl);
             for (let i = 0; i < data.hits.length; i++) {
-              const imgEl = document.createElement('img');
-              imgEl.setAttribute('src', data.hits[i].webformatURL);
-              imgEl.setAttribute('alt', `State of ${stateName} picture`);
-              imgEl.setAttribute('uk-cover', '');
-              const listItemEl = document.createElement('li');
+              const imgEl = document.createElement("img");
+              imgEl.setAttribute("src", data.hits[i].webformatURL);
+              imgEl.setAttribute("alt", `State of ${stateName} picture`);
+              imgEl.setAttribute("uk-cover", "");
+              const listItemEl = document.createElement("li");
               listItemEl.appendChild(imgEl);
               statePictureListEl.appendChild(listItemEl);
             }
           }
         });
-    };
+    }
 
     // DC - https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
     function removeAllChildNodes(parent) {
       while (parent.firstChild) {
           parent.removeChild(parent.firstChild);
       }
-    };
-
-
+    }
 
     // // functions for fun facts on page 2
     function getStateFlower(stateName, fact) {
@@ -184,7 +175,7 @@ $('.gobackbtn').on("click", function() {
             }
           }
         });
-    };
+    }
 
     function getStateButterfly(stateName, fact) {
       fetch(`http://en.wikipedia.org/w/api.php?action=parse&page=${fact}&format=json&origin=*`)
@@ -208,7 +199,7 @@ $('.gobackbtn').on("click", function() {
             }
           }
         });
-    };
+    }
 
     function getStateBird(stateName, fact) {
       fetch(`http://en.wikipedia.org/w/api.php?action=parse&page=${fact}&format=json&origin=*`)
@@ -232,7 +223,7 @@ $('.gobackbtn').on("click", function() {
             }
           }
         });
-    };
+    }
 
     function getStateMammal(stateName, fact) {
       fetch(`http://en.wikipedia.org/w/api.php?action=parse&page=${fact}&format=json&origin=*`)
@@ -264,7 +255,7 @@ $('.gobackbtn').on("click", function() {
             }
           }
         });
-    };
+    }
 
     function getStateTree(stateName, fact) {
       fetch(`http://en.wikipedia.org/w/api.php?action=parse&page=${fact}&format=json&origin=*`)
@@ -288,7 +279,7 @@ $('.gobackbtn').on("click", function() {
             }
           }
         });
-    };
+    }
 
     function getStateCapital(stateName, fact) {
       fetch(
@@ -314,8 +305,8 @@ $('.gobackbtn').on("click", function() {
             }
             weather(capitalName);
             getTimeZone(capitalName);
-          })
-    };
+          });
+    }
 
     function getStateNickName(stateName, fact) {
       fetch(
@@ -344,19 +335,19 @@ $('.gobackbtn').on("click", function() {
             }
           }
         });
-    };
-
+    }
 // weather data for page 2
 
-var rain = '🌧';
-var sun = '☀️';
-var cloud = '🌥';
-var snow = '🌨';
-
-
+var rain = "🌧";
+var sun = "☀️";
+var cloud = "🌥";
+var snow = "🌨";
 
 function weather() {
-        var url = 'https://api.openweathermap.org/data/2.5/weather?q=' + capitalName + '&appid=c24b1e69b12182932011de7f1b2d7c83';
+        var url =
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
+        capitalName +
+        "&appid=c24b1e69b12182932011de7f1b2d7c83";
         fetch(url)
         .then(function (response) {
             return response.json();
@@ -364,16 +355,13 @@ function weather() {
         .then(function (data) {
         generalInfo(data);
         });
-
-};
-
-
+}
 
 function generalInfo(data) {
-        var temp = Math.round(data.main.temp-273.15);
-        var tempF = Math.round((data.main.temp-273.15)*1.8 + 32);
-        $('.name').text(data.name);
-        $('.temp').text(temp + "\xB0C/ " + tempF + "\xB0F");
+        var temp = Math.round(data.main.temp - 273.15);
+        var tempF = Math.round((data.main.temp - 273.15) * 1.8 + 32);
+        $(".name").text(data.name);
+        $(".temp").text(temp + "\xB0C/ " + tempF + "\xB0F");
         var rex = data.weather[0].description.toString().split(' ');
         if (rex.includes('rain')) {
             $('.condition').text(data.weather[0].description + rain);
