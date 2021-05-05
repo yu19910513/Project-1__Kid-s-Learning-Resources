@@ -22,7 +22,10 @@
      <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
         <div>
           <div class="uk-margin-small-top uk-margin-small-bottom uk-card uk-card-default uk-card-body uk-border-rounded">
-            <img src="https://i.giphy.com/media/dCEztbgt6zmJFHSPqr/giphy.webp">
+            <!-- https://www.w3schools.com/graphics/canvas_clock_start.asp -->
+            <canvas id="canvas" width="400" height="400"
+            style="background-color:#333">
+            </canvas>
           </div>
         </div>
         <div>
@@ -36,10 +39,10 @@
         </div>
         <div>
           <div class="uk-margin-small-top uk-margin-small-bottom uk-card uk-card-default uk-card-body uk-border-rounded">
-              <h3 class="uk-card-title">Current State Weather</h3>
-              <div class="name">state name</div>
-              <div class="condition">condition</div>
-              <div class="temp">temperature</div>
+              <h3 class="uk-card-title">Current Weather</h3>
+              <div>City: <span class="name"></span></div>
+              <div>Condition: <span class="condition"></span></div>
+              <div>Temperature: <span class="temp"></span></div>
           </div>
         </div>
       </div>
@@ -47,16 +50,15 @@
   </div>
     <h2>Summary of <span class="header"></span></h2>
     <div class="uk-grid uk-padding-bottom uk-flex uk-flex-wrap" data-uk-grid-margin>
-      <div class="uk-width-1-3">
+      <div class="uk-width-1-4@m uk-margin-large-bottom">
         <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-border-rounded flagImage" data-src="" alt="State-Flag" uk-img>
         </div>
       </div>
-      <div class="uk-width-2-3">
+      <div class="uk-width-3-4@m">
         <div class="uk-border-rounded uk-height-medium uk-flex uk-flex-left uk-flex-middle uk-background-cover uk-dark" data-src="https://images.pexels.com/photos/3826435/pexels-photo-3826435.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" uk-img>
           <div class="js-wrapper uk-text-left@l uk-padding stateInformation">
             <div uk-overflow-auto="selContainer: .uk-height-medium; selContent: .js-wrapper">
               <p class="info funFont1">
-
               </p>
             </div>
           </div>
@@ -79,51 +81,84 @@
           <a href="https://pixabay.com/">
           <img class="pixabayIcon" src="https://pixabay.com/static/img/public/medium_rectangle_b.png" alt="Pixabay">
           </a>
-          <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-          <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+          <a class="uk-position-center-left uk-position-small uk-hidden-hover"  style="color:black; background-color: white; border-radius: .5em;" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+          <a class="uk-position-center-right uk-position-small uk-hidden-hover" style="color:black; background-color: white; border-radius: .5em;"  href="#" uk-slidenav-next uk-slideshow-item="next"></a>
         </div>
       </div>
-      <h2>Fun Facts About <span class="header"></span></h2>
-      <div class="uk-width-1-1 uk-margin-medium-top uk-margin-medium-bottom uk-margin-left">
-        <div class="uk-height-medium uk-flex uk-flex-left uk-flex-middle uk-background-cover uk-dark uk-text-bold uk-text-emphasis" data-src="https://images.pexels.com/photos/3826435/pexels-photo-3826435.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" uk-img>
-          <div class="js-wrapper uk-text-left@l uk-padding">
-
-            <div uk-overflow-auto="selContainer: .uk-height-medium; selContent: .js-wrapper">
-              <div class="uk-margin-medium-top uk-margin-medium-bottom uk-margin-medium-left uk-margin-medium-right uk-text-left@l">
-                <div class="uk-child-width-1-2 uk-child-width-1-4@s uk-grid-match" uk-grid>
-                  <div class="uk-card uk-card-default uk-card-body uk-animation-shake">
-                    <h3>State NickName</h3>
-                    <p class="uk-text-center state-nickname"></p>
-                  </div>
-                  <div class="uk-card uk-card-default uk-card-body uk-animation-shake">
-                    <h3>State Capital</h3>
-                    <p class="uk-text-center state-capital"></p>
-                  </div>
-                  <div class="uk-card uk-card-default uk-card-body uk-animation-shake">
-                    <h3>State Bird</h3>
-                    <p class="uk-text-center state-bird"></p>
-                  </div>
-                  <div class="uk-card uk-card-default uk-card-body uk-animation-shake">
-                    <h3>State Butterfly</h3>
-                    <p class="uk-text-center state-butterfly"></p>
-                  </div>
-                  <div class="uk-card uk-card-default uk-card-body uk-animation-shake">
-                    <h3>State Tree</h3>
-                    <p class="uk-text-center state-tree"></p>
-                  </div>
-                  <div class="uk-card uk-card-default uk-card-body uk-animation-shake">
-                    <h3>State Flower</h3>
-                    <p class="uk-text-center state-flower"></p>
-                  </div>
-                  <div class="uk-card uk-card-default uk-card-body uk-animation-shake">
-                    <h3>State Mammal</h3>
-                    <p class="uk-text-center state-mammal"></p>
-                  </div>
-
-            <div uk-overflow-auto="selContainer: .uk-height-medium; selContent: .js-wrapper">
-              <p class="funFont1">
-                </div>
-              </div>
+      <div
+      class="uk-grid-medium uk-child-width-expand@s uk-text-center uk-width-1-1 uk-margin-top uk-margin-bottom .uk-grid-small uk-flex-around"
+      uk-grid 
+    >
+    <h2>Fun Facts About <span class="header"></span></h2>
+    <p>Filp the cards to learn more!</p>
+    <div class="uk-width-1-1@s" uk-toggle="target: .toggle-card1; animation: uk-animation-fade; queued: true; duration: 300">
+      <div  class="toggle-card1 uk-card uk-card-primary uk-card-body custom-bg-color1 uk-border-rounded">
+        <h3 class="uk-card-title"></h3>
+        <p></p>
+      </div>
+      <div  class="toggle-card1 uk-card uk-card-default uk-card-body custom-bg-color1 uk-border-rounded" hidden>
+        <h3 class="uk-card-title uk-text-bolder uk-text-large">State NickName</h3>
+        <p class="uk-text-bold custom-para-color state-nickname"></p>
+      </div>
+    </div>
+    <div class="uk-width-1-3@s" uk-toggle="target: .toggle-card2; animation: uk-animation-fade; queued: true; duration: 300">
+      <div class="toggle-card2 uk-card uk-card-primary uk-card-body custom-bg-color2 uk-border-rounded">
+        <h3 class="uk-card-title"></h3>
+        <p></p>
+      </div> 
+      <div class="toggle-card2 uk-card uk-card-default uk-card-body custom-bg-color2 uk-border-rounded" hidden>
+        <h3 class="uk-card-title uk-text-bolder">State Capital</h3>
+        <p class="uk-text-bold custom-para-color state-capital"></p>
+      </div>
+    </div>
+    <div class="uk-width-1-3@s" uk-toggle="target: .toggle-card3; animation: uk-animation-fade; queued: true; duration: 300">
+      <div class="toggle-card3 uk-card uk-card-default uk-card-body custom-bg-color3 uk-border-rounded" hidden>
+        <h3 class="uk-card-title uk-text-bolder">State Flower</h3>
+        <p class="uk-text-bold custom-para-color state-flower"></p>
+      </div>
+      <div class="toggle-card3 uk-card uk-card-primary uk-card-body custom-bg-color3 uk-border-rounded" >
+        <h3 class="uk-card-title"></h3>
+        <p></p>
+      </div>
+    </div>
+    <div class="uk-width-1-3@s" uk-toggle="target: .toggle-card4; animation: uk-animation-fade; queued: true; duration: 300">
+      <div class="toggle-card4 uk-card uk-card-default uk-card-body custom-bg-color4 uk-border-rounded" hidden>
+        <h3 class="uk-card-title uk-text-bolder">State Bird</h3>
+        <p class="uk-text-bold custom-para-color state-bird"></p>
+      </div>
+      <div class="toggle-card4 uk-card uk-card-primary uk-card-body custom-bg-color4 uk-border-rounded">
+        <h3 class="uk-card-title"></h3>
+        <p></p>
+      </div>
+    </div>
+    <div class="uk-width-1-3@s" uk-toggle="target: .toggle-card5; animation: uk-animation-fade; queued: true; duration: 300">
+      <div class="toggle-card5 uk-card uk-card-default uk-card-body custom-bg-color5 uk-border-rounded"  hidden>
+        <h3 class="uk-card-title uk-text-bolder">State Mammal </h3>
+        <p class="uk-text-bold custom-para-color state-mammal"></p>
+      </div>
+      <div class="toggle-card5 uk-card uk-card-primary uk-card-body custom-bg-color5 uk-border-rounded">
+        <h3 class="uk-card-title"></h3>
+        <p></p>
+      </div>
+    </div>
+    <div class="uk-width-1-3@s" uk-toggle="target: .toggle-card6; animation: uk-animation-fade; queued: true; duration: 300">
+      <div class="toggle-card6 uk-card uk-card-default uk-card-body custom-bg-color6 uk-border-rounded" hidden>
+        <h3 class="uk-card-title uk-text-bolder">State Tree</h3>
+        <p class="uk-text-bold custom-para-color state-tree"></p>
+      </div>
+      <div class="toggle-card6 uk-card uk-card-primary uk-card-body custom-bg-color6 uk-border-rounded" >
+        <h3 class="uk-card-title"></h3>
+        <p></p>
+      </div>
+    </div>
+    <div class="uk-width-1-3@s" uk-toggle="target: .toggle-card7; animation: uk-animation-fade; queued: true; duration: 300">
+      <div class="toggle-card7 uk-card uk-card-default uk-card-body custom-bg-color7 uk-border-rounded"hidden>
+        <h3 class="uk-card-title uk-text-bolder">State Butterfly</h3>
+        <p class="uk-text-bold custom-para-color state-butterfly"></p>
+      </div>
+      <div class="toggle-card7 uk-card uk-card-primary uk-card-body custom-bg-color7 uk-border-rounded">
+        <h3 class="uk-card-title"></h3>
+        <p></p>
             </div>
           </div>
         </div>
@@ -137,5 +172,6 @@
   <script type="text/javascript" src="./assets/js/uikit.min.js"></script>
   <script type="text/javascript" src="./assets/js/uikit-icons.min.js"></script>
   <script type="text/javascript" src="./assets/js/page2.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 </body>
 </html>

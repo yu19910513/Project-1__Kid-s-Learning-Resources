@@ -33,25 +33,60 @@ p {
     text-align: center;
 }
 
-.passport{
+#passportinstr {
     color: black;
 }
 
-.footer button{
+#searchHistory img{
+   max-width: 100px; 
+   height: auto;
+   opacity: 1;
+}
+
+#searchHistory {
+    margin-left: 0;
+}
+
+.passport {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    max-width: 250px;
+    /* border: thick grey dashed;
+    border-radius: .8em; */
+    padding-bottom: .5em;
+    
+}
+
+.passportItem {
+    color: black;
+    text-align: center;
+    margin-bottom: 0 !important;
+}
+
+.footer button {
     color: white;
     background-color: black;
     font-size: 1em;
     font-family: 'Cabin Sketch', cursive;
 }
 
-.footer a{
-    color: white;
-}
-.footer button:hover{
-    color: white;
-    background-color: black;
+.footer button:hover {
     font-family: 'Cabin Sketch', cursive;
+    font-size: 2em;
+    background-color: black;
     border: thick dashed yellow;
+    border-radius: .5em;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.footer a {
+    color: white;
+  
 }
 
 button:hover {

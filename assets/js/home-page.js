@@ -1,20 +1,22 @@
 // Event listeners for homepage (index.html).
-  //flag buttons
-  $('.eventBtn').on("click", function(event) {
-    var stateName = event.target.value;
-    console.log(event.target.text);
-    localStorage.setItem('stateVisited', stateName);
-    localStorage.setItem(stateName, stateName);
-    window.location.href = 'page2.html';
-  })
 
-  //dropdown list
-  $('a').on("click", function(event) {
-    var stateName = event.target.text;
-    console.log(event.target.text);
-    localStorage.setItem('stateVisited', stateName);
-    localStorage.setItem(stateName, stateName);
-  });
+//flag buttons
+$('.eventBtn').on("click", function(event) {
+  var stateName = event.target.value;
+  console.log(event.target.text);
+  localStorage.setItem('stateVisited', stateName);
+  localStorage.setItem(stateName, stateName);
+  window.location.href = 'page2.html';
+})
+
+//dropdown list
+$('a').on("click", function(event) {
+  var stateName = event.target.text;
+  console.log(event.target.text);
+  localStorage.setItem('stateVisited', stateName);
+  localStorage.setItem(stateName, stateName);
+});
+
 
   var stateArray = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"];
   var flagArray =
@@ -70,10 +72,19 @@
 "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/2560px-Flag_of_Wyoming.svg.png" ];
 
   for (let i = 0; i < stateArray.length; i++) {
+
     if (stateArray[i] == localStorage.getItem(stateArray[i])) {
-      $('.passport').append($('<div>').text(stateArray[i]));
-      $('.passport').append($('<img>').attr('src', flagArray[i]));
-    }
+      var stateContainer = $('#searchHistory')
+      .append(
+          ($('<div>').addClass('passport').addClass('uk-display-inline'))
+        .append(
+          ($('<p>').text(stateArray[i]).addClass('passportItem'))
+        )
+        .append(
+          $('<img>').attr('src', flagArray[i]).addClass('uk-border-pill')
+        )
+      )
+    };
   }
 
   $('.clearBtn').on('click', clearFunction);

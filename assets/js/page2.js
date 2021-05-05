@@ -1,3 +1,5 @@
+//added in gunjan's cards; fixed the duplicated state info by adding in returns and breaking the picture function out into another; removed console.logs
+
 // Event listener for page 2 Go Back button
 $('.gobackbtn').on("click", function() {
       window.location.href = 'index.html';
@@ -36,14 +38,13 @@ $('.gobackbtn').on("click", function() {
     ];
 
     // Calling functions to run on page load
-    getInfo();
+    startCollectingData();
 
     // Functions for page 2 -
     function startCollectingData() {
       stateName = localStorage.getItem("stateVisited");
-      console.log(stateName);
       getInfo(stateName, symbols[index]);
-    }
+    };
 
 
     function getInfo() {
@@ -56,8 +57,9 @@ $('.gobackbtn').on("click", function() {
       getStateCapital(stateName, symbols[5]);
       getStateNickName(stateName, symbols[6]);
       getStateSummary(stateName);
-      //can add donnas || mine getImage funtion and api key from here
-    }
+      getStateImages (stateName);
+
+    };
 
     function getStateSummary(){
       var stateName = localStorage.getItem('stateVisited');
@@ -77,6 +79,7 @@ $('.gobackbtn').on("click", function() {
           return responseAgain.json();
         })
         .then(function (dataAgain) {
+          $('.flagImage').attr('data-src',dataAgain.query.pages[pageId].thumbnail.source);
           $('.info').append(dataAgain.query.pages[pageId].extract);
           $('.header').text(title)
         })
@@ -87,7 +90,6 @@ $('.gobackbtn').on("click", function() {
           return response.json();
       })
       .then(function (data) {
-        console.log(data);
         var title = data.query.search[0].title;
         var pageId = data.query.search[0].pageid;
         fetch('http://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts|pageimages&iilimit=50&titles='+title+'&exintro=1&origin=*')
@@ -106,7 +108,6 @@ $('.gobackbtn').on("click", function() {
           return response.json();
       })
       .then(function (data) {
-        console.log(data);
         var title = data.query.search[0].title;
         var pageId = data.query.search[0].pageid;
         fetch('http://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts|pageimages&iilimit=50&titles='+title+'&exintro=1&origin=*')
@@ -120,10 +121,12 @@ $('.gobackbtn').on("click", function() {
         })
       })
     }
-
-
+    };
 
     // this fetch pulls in the data for the title (i.e. state name) and the general information about the state and displays it on page 2.
+
+
+    function getStateImages (){
       // set the next URL based on the state selected on the first page.
       const url2 = `https://pixabay.com/api?q=${stateName}&key=21438663-60940dce2a3b8f288719617da&lang=en&image_type=all&orientation=horizontal&safesearch=true&per_page=5&category=backgrounds,nature,science,education,places,animals,sports,buildings`;
 
@@ -147,14 +150,14 @@ $('.gobackbtn').on("click", function() {
             }
           }
         });
-    }
+    };
 
     // DC - https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
     function removeAllChildNodes(parent) {
       while (parent.firstChild) {
           parent.removeChild(parent.firstChild);
       }
-    }
+    };
 
 
 
@@ -169,7 +172,6 @@ $('.gobackbtn').on("click", function() {
           }
         })
         .then(function (data) {
-          console.log(data);
           const parser = new DOMParser();
           const htmlString = data.parse.text["*"];
           const doc1 = parser.parseFromString(htmlString, "text/html");
@@ -182,7 +184,7 @@ $('.gobackbtn').on("click", function() {
             }
           }
         });
-    }
+    };
 
     function getStateButterfly(stateName, fact) {
       fetch(`http://en.wikipedia.org/w/api.php?action=parse&page=${fact}&format=json&origin=*`)
@@ -206,7 +208,7 @@ $('.gobackbtn').on("click", function() {
             }
           }
         });
-    }
+    };
 
     function getStateBird(stateName, fact) {
       fetch(`http://en.wikipedia.org/w/api.php?action=parse&page=${fact}&format=json&origin=*`)
@@ -230,7 +232,7 @@ $('.gobackbtn').on("click", function() {
             }
           }
         });
-    }
+    };
 
     function getStateMammal(stateName, fact) {
       fetch(`http://en.wikipedia.org/w/api.php?action=parse&page=${fact}&format=json&origin=*`)
@@ -262,7 +264,7 @@ $('.gobackbtn').on("click", function() {
             }
           }
         });
-    }
+    };
 
     function getStateTree(stateName, fact) {
       fetch(`http://en.wikipedia.org/w/api.php?action=parse&page=${fact}&format=json&origin=*`)
@@ -286,7 +288,7 @@ $('.gobackbtn').on("click", function() {
             }
           }
         });
-    }
+    };
 
     function getStateCapital(stateName, fact) {
       fetch(
@@ -304,16 +306,16 @@ $('.gobackbtn').on("click", function() {
           const htmlString = data.parse.text["*"];
           const doc1 = parser.parseFromString(htmlString, "text/html");
           var wikiEl = doc1.querySelector("body > div > table.wikitable.plainrowheaders.sortable");
-          console.log(wikiEl);
           var rows = wikiEl.querySelectorAll("tr");
           for (i = 1; i < rows.length; i++) {
             if (rows[i].cells[0].textContent.trim() === stateName)
               capitalName = rows[i].cells[1].textContent;
               stateCapitalEl.textContent = capitalName;
-              weather(capitalName);
             }
+            weather(capitalName);
+            getTimeZone(capitalName);
           })
-        };
+    };
 
     function getStateNickName(stateName, fact) {
       fetch(
@@ -342,8 +344,9 @@ $('.gobackbtn').on("click", function() {
             }
           }
         });
-    }
-    // weather data for page 2
+    };
+
+// weather data for page 2
 
 var rain = '🌧';
 var sun = '☀️';
@@ -353,23 +356,24 @@ var snow = '🌨';
 
 
 function weather() {
-        var url = 'https://api.openweathermap.org/data/2.5/weather?q='+capitalName+ '&appid=c24b1e69b12182932011de7f1b2d7c83';
+        var url = 'https://api.openweathermap.org/data/2.5/weather?q=' + capitalName + '&appid=c24b1e69b12182932011de7f1b2d7c83';
         fetch(url)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-          console.log(data);
         generalInfo(data);
         });
 
 };
 
+
+
 function generalInfo(data) {
         var temp = Math.round(data.main.temp-273.15);
         var tempF = Math.round((data.main.temp-273.15)*1.8 + 32);
         $('.name').text(data.name);
-        $('.temp').text("Temperature: " + temp + "\xB0C/ " + tempF + "\xB0F");
+        $('.temp').text(temp + "\xB0C/ " + tempF + "\xB0F");
         var rex = data.weather[0].description.toString().split(' ');
         if (rex.includes('rain')) {
             $('.condition').text(data.weather[0].description + rain);
@@ -385,39 +389,174 @@ function generalInfo(data) {
 };
 
 //time
-var cityArray = ['America/New_York', 'America/Los_Angeles', 'America/Phoenix', 'America/Boise', 'America/Kentucky/Louisville', 'America/Anchorage', 'Pacific/Honolulu']
-var cT = ["Alabama","Illinois" , "Iowa","Minnesota","Mississippi" ,"Oklahoma" ,"Texas" ,"Missouri" ,"South Dakota" , "Wisconsin" ,"Kansas","Kentucky","Louisiana","Nebraska","North Dakota"];
-var mT = ["Colorado" ,"Idaho","Montana", "Nevada",  "Wyoming" ,"New Mexico" ,"Utah" ,];
-var eT = ["Arkansas","Connecticut","Delaware" ,"Ohio","Florida" , "Pennsylvania" ,"Georgia (U.S. state)", "Georgia", "Indiana" ,"Maine" ,"Maryland","West Virginia","Massachusetts","Vermont" ,"Virginia" ,"Michigan", "New Hampshire","New Jersey" ,"New York" ,"Rhode Island" ,"South Carolina","Tennessee","North Carolina",]
-var pST = ["California","Oregon" , "Washington (state)", "Washington" ]
-function time(){
-  var d = new Date();
-  for (let j = 0; j < cT.length; j++) {
-  for (let k = 0; k < mT.length; k++) {
-  for (let l = 0; l < eT.length; l++) {
-  for (let p = 0; p < pST.length; p++) {
-  if (localStorage.getItem('stateVisited') === 'Arizona' ){
-  $('.currenttime').text(d.toLocaleString('en-US', { timeZone: cityArray[2] }))}
-  if (localStorage.getItem('stateVisited') === cT[j]){
-  $('.currenttime').text(d.toLocaleString('en-US', { timeZone: cityArray[4] }))}
-  if (localStorage.getItem('stateVisited') === mT[k]){
-    $('.currenttime').text(d.toLocaleString('en-US', { timeZone: cityArray[3] }))}
-  if (localStorage.getItem('stateVisited') === eT[l]){
-    $('.currenttime').text(d.toLocaleString('en-US', { timeZone: cityArray[0] }))}
-  if (localStorage.getItem('stateVisited') === pST[p]){
-    $('.currenttime').text(d.toLocaleString('en-US', { timeZone: cityArray[1] }))}
-  if(localStorage.getItem('stateVisited') === 'Hawaii'){
-    $('.currenttime').text(d.toLocaleString('en-US', { timeZone: cityArray[6] }))}
- if (localStorage.getItem('stateVisited') === 'Alaska'){
-    $('.currenttime').text(d.toLocaleString('en-US', { timeZone: cityArray[5] }))}
-  }
-  }
-  }
-  }
 
+function getTimeZone(capitalName) {
+  var url = 'https://api.openweathermap.org/data/2.5/weather?q=' + capitalName + '&appid=c24b1e69b12182932011de7f1b2d7c83';
+  fetch(url)
+  .then(function (response) {
+      return response.json();
+  })
+  .then(function (data) {
+  generalInfo(data);
+  console.log(data);
+  var timeZone = data.timezone;
+  console.log(timeZone);
+  getTime(timeZone);
+  });
+}
+
+function getTime (timeZone){
+  if (timeZone == "-18000"){
+    var utc = -5 //"America/Chicago/central daylight"
+    var currentTime = moment().utcOffset(utc).format('MMMM Do YYYY, h:mm a')
+    $('.currenttime').text(currentTime);
+  }
+    if(timeZone == "-21600"){
+      var utc = -6 //"America/Denver/mountain daylight
+      var currentTime = moment().utcOffset(utc).format('MMMM Do YYYY, h:mm a')
+      $('.currenttime').text(currentTime);
+  }
+    if(timeZone == "-25200"){
+      var utc = -7 //"America/Los_Angeles/pacific daylight
+      var currentTime = moment().utcOffset(utc).format('MMMM Do YYYY, h:mm a')
+      $('.currenttime').text(currentTime);
+  }
+    if(timeZone == "-14400"){
+      var utc = -4 //"America/New_York/eastern daylight
+      var currentTime = moment().utcOffset(utc).format('MMMM Do YYYY, h:mm a')
+      $('.currenttime').text(currentTime);
+  }
+    if(timeZone == "-36000"){
+      var utc = -10 //Pacific/Honolulu/standard
+      var currentTime = moment().utcOffset(utc).format('MMMM Do YYYY, h:mm a')
+      $('.currenttime').text(currentTime);
+  }
+    if(timeZone == "-28800"){
+      var utc = -8 //America/Anchorage/alaska daylight
+      var currentTime = moment().utcOffset(utc).format('MMMM Do YYYY, h:mm a')
+      $('.currenttime').text(currentTime);
+  }
 };
 
-setInterval(time, 1000);
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
+
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
+}
+
+function drawFace(ctx, radius) {
+  var grad;
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill();
+}
+
+function drawNumbers(ctx, radius) {
+  var ang;
+  var num;
+  ctx.font = radius*0.15 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+}
+
+function drawTime(ctx, radius){
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+}
+
+
+
+
+
+
+
+// var cityArray = ['America/New_York', 'America/Los_Angeles', 'America/Phoenix', 'America/Boise', 'America/Kentucky/Louisville', 'America/Anchorage', 'Pacific/Honolulu']
+// var cT = ["Alabama","Illinois" , "Iowa","Minnesota","Mississippi" ,"Oklahoma" ,"Texas" ,"Missouri" ,"South Dakota" , "Wisconsin" ,"Kansas","Kentucky","Louisiana","Nebraska","North Dakota"];
+// var mT = ["Colorado" ,"Idaho","Montana", "Nevada",  "Wyoming" ,"New Mexico" ,"Utah" ];
+// var eT = ["Arkansas","Connecticut","Delaware" ,"Ohio","Florida" , "Pennsylvania" ,"Georgia (U.S. state)", "Georgia", "Indiana" ,"Maine" ,"Maryland","West Virginia","Massachusetts","Vermont" ,"Virginia" ,"Michigan", "New Hampshire","New Jersey" ,"New York" ,"Rhode Island" ,"South Carolina","Tennessee","North Carolina"]
+// var pST = ["California","Oregon" , "Washington (state)", "Washington" ]
+
+// function time(){
+//   var d = new Date();
+//   for (let j = 0; j < cT.length; j++) {
+//   for (let k = 0; k < mT.length; k++) {
+//   for (let l = 0; l < eT.length; l++) {
+//   for (let p = 0; p < pST.length; p++) {
+//   if (localStorage.getItem('stateVisited') === 'Arizona' ){
+//   $('.currenttime').text(d.toLocaleString('en-US', { timeZone: cityArray[2] }))}
+//   if (localStorage.getItem('stateVisited') === cT[j]){
+//   $('.currenttime').text(d.toLocaleString('en-US', { timeZone: cityArray[4] }))}
+//   if (localStorage.getItem('stateVisited') === mT[k]){
+//     $('.currenttime').text(d.toLocaleString('en-US', { timeZone: cityArray[3] }))}
+//   if (localStorage.getItem('stateVisited') === eT[l]){
+//     $('.currenttime').text(d.toLocaleString('en-US', { timeZone: cityArray[0] }))}
+//   if (localStorage.getItem('stateVisited') === pST[p]){
+//     $('.currenttime').text(d.toLocaleString('en-US', { timeZone: cityArray[1] }))}
+//   if(localStorage.getItem('stateVisited') === 'Hawaii'){
+//     $('.currenttime').text(d.toLocaleString('en-US', { timeZone: cityArray[6] }))}
+//  if (localStorage.getItem('stateVisited') === 'Alaska'){
+//     $('.currenttime').text(d.toLocaleString('en-US', { timeZone: cityArray[5] }))}
+//   }
+//   }
+//   }
+//   }
+// };
+
+// setInterval(time, 1000);
 
 
 
@@ -471,10 +610,11 @@ var flagArray =
 "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Flag_of_Washington.svg/2560px-Flag_of_Washington.svg.png",
 "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Flag_of_West_Virginia.svg/2880px-Flag_of_West_Virginia.svg.png",
 "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Flag_of_Wisconsin.svg/2560px-Flag_of_Wisconsin.svg.png",
-"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/2560px-Flag_of_Wyoming.svg.png" ]
+"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/2560px-Flag_of_Wyoming.svg.png"
+];
 
-var stateArray = [
-"Alabama",
+var stateArray =
+["Alabama",
 "Alaska",
 "Arizona",
 "Arkansas",
@@ -524,14 +664,13 @@ var stateArray = [
 "West Virginia",
 "Wisconsin",
 "Wyoming"
-]
-
+];
 for (let a = 0; a < stateArray.length; a++) {
-if (localStorage.getItem('stateVisited') == stateArray[a]) {
-$('.flagImage').attr('data-src',flagArray[a]);
-}else if(localStorage.getItem('stateVisited') == 'Washington'){
-  $('.flagImage').attr('data-src',flagArray[46]);
-} else if(localStorage.getItem('stateVisited') == 'Georgia'){
-  $('.flagImage').attr('data-src',flagArray[9])
-}
-}
+  if (localStorage.getItem('stateVisited') == stateArray[a]) {
+  $('.flagImage').attr('data-src',flagArray[a]);
+  }else if(localStorage.getItem('stateVisited') == 'Washington'){
+    $('.flagImage').attr('data-src',flagArray[46]);
+  } else if(localStorage.getItem('stateVisited') == 'Georgia'){
+    $('.flagImage').attr('data-src',flagArray[9])
+  }
+  }
