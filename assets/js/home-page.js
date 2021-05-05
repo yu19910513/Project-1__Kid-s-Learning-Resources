@@ -75,3 +75,10 @@
       $('.passport').append($('<img>').attr('src', flagArray[i]));
     }
   }
+
+  $('.clearBtn').on('click', clearFunction);
+  function clearFunction (){
+    localStorage.clear();
+    $('.passport').children().remove();
+    // location.reload()
+  }
