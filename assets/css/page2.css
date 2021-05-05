@@ -2,6 +2,32 @@ body {
   background-color: black;
 }
 
+.title {
+  text-align: center;
+  color: yellow;
+  font-weight: bolder;
+  font-size: 5em;
+  font-family: 'Cabin Sketch', cursive;
+}
+
+.title2 {
+  text-align: center;
+  color: yellow;
+  font-weight: bolder;
+  font-size: 3em;
+  font-family: 'Cabin Sketch', cursive;
+}
+
+.gobackbtn {
+  color: yellow;
+}
+
+.gobackbtn:hover {
+background-image:none;
+background-color:#ff00ff;
+color: darkblue;
+}
+
 .funFont1 {
   font-family: "Cabin Sketch", cursive, sans-serif;
   font-size: 1em;
@@ -17,6 +43,12 @@ body {
   font-family: "Cabin Sketch", cursive, sans-serif;
   font-size: 8em;
   color: black;
+}
+
+.currentTimeAndWeatherSection {
+  font-family: 'Cabin Sketch', cursive, sans-serif;
+  font-size: 26px;
+  color: darkblue;
 }
 
 .flagImage {
