@@ -75,6 +75,7 @@ $(".gobackbtn").on("click", function () {
           return responseAgain.json();
         })
         .then(function (dataAgain) {
+          console.log(dataAgain);
           $('.flagImage').attr('data-src',dataAgain.query.pages[pageId].thumbnail.source);
           $('.info').append(dataAgain.query.pages[pageId].extract);
           $('.header').text(title)
@@ -365,12 +366,16 @@ function generalInfo(data) {
         var rex = data.weather[0].description.toString().split(' ');
         if (rex.includes('rain')) {
             $('.condition').text(data.weather[0].description + rain);
+            $('.weatherEl').css('background-image',"url('assets/images/rain.gif')");
         } else if (rex.includes('clear')) {
             $('.condition').text(data.weather[0].description + sun);
+            $('.weatherEl').css('background-image',"url('assets/images/sun.gif')");
         } else if (rex.includes('snow')) {
             $('.condition').text(data.weather[0].description + snow);
+            $('.weatherEl').css('background-image',"url('assets/images/snow.gif')");
         } else if (rex.includes('clouds')) {
             $('.condition').text(data.weather[0].description + cloud);
+            $('.weatherEl').css('background-image',"url('assets/images/Clouds.gif')");
         } else {
             $('.condition').text(data.weather[0].description)
         };
