@@ -1,9 +1,9 @@
 // Event listeners for homepage (index.html).
 
 //flag buttons
-// var x = document.getElementById("myAudio");
-// x.autoplay = true;
-// x.load()
+var x = document.getElementById("myAudio");
+x.autoplay = true;
+x.load();
 
 
 $('.eventBtn').on("click", function(event) {
