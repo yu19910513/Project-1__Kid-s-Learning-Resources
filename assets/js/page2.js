@@ -24,6 +24,7 @@ $(".gobackbtn").on("click", function () {
     var stateMammalEl = document.querySelector(".state-mammal");
     var stateTreeEl = document.querySelector(".state-tree");
     var stateNickNameEl = document.querySelector(".state-nickname");
+    var timeInterval;
 
     var symbols = [
       "List_of_U.S._state_and_territory_flowers",
@@ -75,7 +76,6 @@ $(".gobackbtn").on("click", function () {
           return responseAgain.json();
         })
         .then(function (dataAgain) {
-          console.log(dataAgain);
           $('.flagImage').attr('data-src',dataAgain.query.pages[pageId].thumbnail.source);
           $('.info').append(dataAgain.query.pages[pageId].extract);
           $('.header').text(title)
@@ -300,23 +300,27 @@ $(".gobackbtn").on("click", function () {
           var wikiEl = doc1.querySelector("body > div > table.wikitable.plainrowheaders.sortable");
           var rows = wikiEl.querySelectorAll("tr");
           for (i = 1; i < rows.length; i++) {
-            if (rows[i].cells[0].textContent.trim() === stateName){
+            if (rows[i].cells[0].textContent.trim() === stateName)
               capitalName = rows[i].cells[1].textContent;
-              stateCapitalEl.textContent = capitalName}
-          }
-          if (stateName == 'Maine'){
-              weatherZip()
-            } else {
+              stateCapitalEl.textContent = capitalName;
+            }
+            if (stateName == 'Maine'){
+              weatherZip(04330);
+            }
+            else if (stateName == 'Kentucky'){
+              weatherZip(40603);
+            }
+            else {
               weather(capitalName);
               getTimeZone(capitalName);
-          }
+            }
 
-        })
+          })
     };
 
     /// for our speical MAINE problem
-    function weatherZip() {
-      var url = "https://api.openweathermap.org/data/2.5/weather?zip=04330,us&appid=c24b1e69b12182932011de7f1b2d7c83";
+    function weatherZip(zipcode) {
+      var url = "https://api.openweathermap.org/data/2.5/weather?zip="+zipcode+",us&appid=c24b1e69b12182932011de7f1b2d7c83";
       fetch(url)
       .then(function (response) {
           return response.json();
@@ -327,8 +331,6 @@ $(".gobackbtn").on("click", function () {
       getTime(timeZone);
       });
     };
-
-
 
     function getStateNickName(stateName, fact) {
       fetch(
@@ -365,7 +367,7 @@ var sun = "☀️";
 var cloud = "🌥";
 var snow = "🌨";
 
-function weather(capitalName) {
+function weather() {
         var url =
         "https://api.openweathermap.org/data/2.5/weather?q=" +
         capitalName +
@@ -380,27 +382,28 @@ function weather(capitalName) {
 }
 
 function generalInfo(data) {
-        var temp = Math.round(data.main.temp - 273.15);
-        var tempF = Math.round((data.main.temp - 273.15) * 1.8 + 32);
-        $(".name").text(data.name);
-        $(".temp").text(temp + "\xB0C/ " + tempF + "\xB0F");
-        var rex = data.weather[0].description.toString().split(' ');
-        if (rex.includes('rain')) {
-            $('.condition').text(data.weather[0].description + rain);
-            $('.weatherEl').css('background-image',"url('assets/images/rain.gif')");
-        } else if (rex.includes('clear')) {
-            $('.condition').text(data.weather[0].description + sun);
-            $('.weatherEl').css('background-image',"url('assets/images/sun.gif')");
-        } else if (rex.includes('snow')) {
-            $('.condition').text(data.weather[0].description + snow);
-            $('.weatherEl').css('background-image',"url('assets/images/snow.gif')");
-        } else if (rex.includes('clouds')) {
-            $('.condition').text(data.weather[0].description + cloud);
-            $('.weatherEl').css('background-image',"url('assets/images/Clouds.gif')");
-        } else {
-            $('.condition').text(data.weather[0].description)
-        };
+  var temp = Math.round(data.main.temp - 273.15);
+  var tempF = Math.round((data.main.temp - 273.15) * 1.8 + 32);
+  $(".name").text(data.name);
+  $(".temp").text(temp + "\xB0C/ " + tempF + "\xB0F");
+  var rex = data.weather[0].description.toString().split(' ');
+  if (rex.includes('rain')) {
+      $('.condition').text(data.weather[0].description + rain);
+      $('.weatherEl').css('background-image',"url('assets/images/rain.gif')");
+  } else if (rex.includes('clear')) {
+      $('.condition').text(data.weather[0].description + sun);
+      $('.weatherEl').css('background-image',"url('assets/images/sun.gif')");
+  } else if (rex.includes('snow')) {
+      $('.condition').text(data.weather[0].description + snow);
+      $('.weatherEl').css('background-image',"url('assets/images/snow.gif')");
+  } else if (rex.includes('clouds')) {
+      $('.condition').text(data.weather[0].description + cloud);
+      $('.weatherEl').css('background-image',"url('assets/images/Clouds.gif')");
+  } else {
+      $('.condition').text(data.weather[0].description)
+  };
 };
+
 
 //time
 
@@ -411,11 +414,20 @@ function getTimeZone(capitalName) {
       return response.json();
   })
   .then(function (data) {
-  generalInfo(data);
-  console.log(data);
-  var timeZone = data.timezone;
-  console.log(timeZone);
-  getTime(timeZone);
+    generalInfo(data);
+    console.log(data);
+    var timeZone = data.timezone;
+    console.log(timeZone);
+    getTime(timeZone);
+    // DC START - Changed this to keep updating the clock every 30 seconds ...
+    if (timeInterval) {
+      // If there was a prior timer, clear it to stop ...
+      clearInterval(timeInterval);
+    }
+    timeInterval = setInterval(function() {
+      getTime(timeZone); 
+    }, 30 * 1000); 
+    // DC END
   });
 }
 

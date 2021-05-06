@@ -23,9 +23,9 @@ body {
 }
 
 .gobackbtn:hover {
-background-image:none;
-background-color:#ff00ff;
-color: darkblue;
+  background-image:none;
+  background-color:#ff00ff;
+  color: darkblue;
 }
 
 .funFont1 {
@@ -43,6 +43,9 @@ color: darkblue;
   font-family: "Cabin Sketch", cursive, sans-serif;
   font-size: 8em;
   color: black;
+}
+.funFont4 {
+  color: darkblue;
 }
 
 .currentTimeAndWeatherSection {
