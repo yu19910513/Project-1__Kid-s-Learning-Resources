@@ -1,6 +1,11 @@
 // Event listeners for homepage (index.html).
 
 //flag buttons
+var x = document.getElementById("myAudio");
+x.autoplay = true;
+x.load()
+
+
 $('.eventBtn').on("click", function(event) {
   var stateName = event.target.value;
   if (!stateName){
@@ -92,5 +97,4 @@ $('a').on("click", function(event) {
   function clearFunction (){
     localStorage.clear();
     $('.passport').children().remove();
-    // location.reload()
   }
