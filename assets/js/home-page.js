@@ -1,11 +1,6 @@
 // Event listeners for homepage (index.html).
 
 //flag buttons
-var x = document.getElementById("myAudio");
-x.autoplay = true;
-x.load();
-
-
 $('.eventBtn').on("click", function(event) {
   var stateName = event.target.value;
   if (!stateName){
@@ -75,7 +70,7 @@ $('a').on("click", function(event) {
 "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Flag_of_Washington.svg/2560px-Flag_of_Washington.svg.png",
 "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Flag_of_West_Virginia.svg/2880px-Flag_of_West_Virginia.svg.png",
 "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Flag_of_Wisconsin.svg/2560px-Flag_of_Wisconsin.svg.png",
-"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/2560px-Flag_of_Wyoming.svg.png" ];
+"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_Wyoming.svg/2560px-Flag_of_Wyoming.svg.png"];
 
   for (let i = 0; i < stateArray.length; i++) {
 
@@ -97,4 +92,5 @@ $('a').on("click", function(event) {
   function clearFunction (){
     localStorage.clear();
     $('.passport').children().remove();
+    // location.reload()
   }

@@ -53,10 +53,21 @@ p {
     align-content: center;
     align-items: center;
     max-width: 250px;
-    /* border: thick grey dashed;
-    border-radius: .8em; */
+    padding-top:.5em;
+    padding-right: 1em;
+    padding-left: 1em;
+    transition: transform .2s;
     padding-bottom: .5em;
     
+}
+
+.passport:hover {
+    transform: scale(1.5) !important;
+    background-color: white;
+    border-radius: 2em;
+    z-index: 2;
+    box-shadow: 0 0 10px black;
+    margin: 2em;
 }
 
 .passportItem {
@@ -99,6 +110,10 @@ button:hover {
     color: white;
     background-color: black;
     font-family: 'Cabin Sketch', cursive;
+}
+
+.dropdown a {
+    font-size: 1.5em;
 }
 
 .state-dropdown {

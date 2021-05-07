@@ -7,7 +7,7 @@ body {
   color: yellow;
   font-weight: bolder;
   font-size: 5em;
-  font-family: 'Cabin Sketch', cursive;
+  font-family: "Cabin Sketch", cursive;
 }
 
 .title2 {
@@ -15,7 +15,15 @@ body {
   color: yellow;
   font-weight: bolder;
   font-size: 3em;
-  font-family: 'Cabin Sketch', cursive;
+  font-family: "Cabin Sketch", cursive;
+}
+
+.subtitle-2 {
+  text-align: center;
+  color: yellow;
+  font-weight: bolder;
+  font-size: 2em;
+  font-family: "Cabin Sketch", cursive;
 }
 
 .gobackbtn {
@@ -23,8 +31,8 @@ body {
 }
 
 .gobackbtn:hover {
-  background-image:none;
-  background-color:#ff00ff;
+  background-image: none;
+  background-color: #ff00ff;
   color: darkblue;
 }
 
@@ -49,13 +57,12 @@ body {
 }
 
 .currentTimeAndWeatherSection {
-  font-family: 'Cabin Sketch', cursive, sans-serif;
+  font-family: "Cabin Sketch", cursive, sans-serif;
   font-size: 26px;
   color: darkblue;
 }
 
 .flagImage {
-  margin-left: 20px;
   min-width: 250px;
 }
 
