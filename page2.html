@@ -9,77 +9,77 @@
     <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./assets/css/uikit.min.css"/>
     <link rel="stylesheet" type="text/css" href="./assets/css/page2.css"/>
-    <title>Kid's Corner Page 2</title>
+    <title>Kid's Corner - State Information</title>
 </head>
 <body>
     <div class="uk-container uk-container-center uk-margin-top uk-margin-bottom uk-margin-left uk-container-expand uk-border-rounded">
         <h1 class="uk-text-center uk-heading-small uk-heading-divider title">Welcome to <span class="header"></span></h1>
-            <button class="uk-button uk-button-default uk-button-large funFont2 gobackbtn">Go Back</button>
+        <!-- <button class="uk-button uk-button-default uk-button-large funFont2 gobackbtn">Go Back</button> -->
         <div class="uk-grid uk-flex uk-flex-center" data-uk-grid-margin>
-        <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
-            <div>
-            <div class="uk-margin-small-top uk-margin-small-bottom uk-card uk-card-default uk-card-body uk-border-rounded">
-                <!-- https://www.w3schools.com/graphics/canvas_clock_start.asp -->
-                <h3 class="currentTimeAndWeatherSection">Current Local Time</h3>
-                <div style= "width: 100%; height: same-as-width;">
-                    <canvas id="canvas" class=""
-                    style="background-color: black;">
-                    </canvas>
+            <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
+                <div>
+                    <div class="uk-margin-small-top uk-margin-small-bottom uk-card uk-card-default uk-card-body uk-border-rounded">
+                        <!-- https://www.w3schools.com/graphics/canvas_clock_start.asp -->
+                        <h3 class="currentTimeAndWeatherSection">Current Local Time</h3>
+                        <div style= "width: 100%; height: same-as-width;">
+                            <canvas id="canvas" class=""
+                            style="background-color: white;">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-margin-small-top uk-margin-small-bottom uk-card uk-card-default uk-card-body uk-border-rounded uk-flex uk-flex-left uk-background-cover" data-src="https://images.pexels.com/photos/590750/pexels-photo-590750.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" uk-img>
+                        <h3 class="uk-card-title uk-text-center uk-text-bolder currentTimeAndWeatherSection"><span class="currentTimeAndWeatherSection">Current Time in </span><span class="header currentTimeAndWeatherSection"></span><span class="statetime"></span>
+                        <p class="currenttime uk-text-center currentTimeAndWeatherSection"></p>
+                        </h3>
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-margin-small-top uk-margin-small-bottom uk-card uk-card-body uk-border-rounded weatherEl textshadow">
+                        <h3 class="uk-text-bolder currentTimeAndWeatherSection"><span class="currentTimeAndWeatherSection"></span>Current State Weather</h3>
+                        <div class="currentTimeAndWeatherSection">City: <span class="name currentTimeAndWeatherSection"></span></div>
+                        <div class="currentTimeAndWeatherSection">Condition: <span class="condition currentTimeAndWeatherSection"></span></div>
+                        <div class="currentTimeAndWeatherSection">Temperature: <span class="temp currentTimeAndWeatherSection"></span></div>
+                    </div>
+                </div>
             </div>
-            </div>
-            </div>
-            <div>
-            <div class="uk-margin-small-top uk-margin-small-bottom uk-card uk-card-default uk-card-body uk-border-rounded uk-flex uk-flex-left uk-background-cover" data-src="https://images.pexels.com/photos/590750/pexels-photo-590750.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" uk-img>
-            <h3 class="uk-card-title uk-text-center uk-text-bolder currentTimeAndWeatherSection"><span class="currentTimeAndWeatherSection">Current Time in </span><span class="header currentTimeAndWeatherSection"></span><span class="statetime"></span>
-            <p class="currenttime uk-text-center currentTimeAndWeatherSection"></p>
-            </h3>
-            </div>
-            </div>
-            <div>
-            <div class="uk-margin-small-top uk-margin-small-bottom uk-card uk-card-body uk-border-rounded weatherEl">
-                <h3 class="uk-text-bolder currentTimeAndWeatherSection"><span class="currentTimeAndWeatherSection"></span>Current State Weather</h3>
-                <div class="currentTimeAndWeatherSection">City: <span class="name currentTimeAndWeatherSection"></span></div>
-                <div class="currentTimeAndWeatherSection">Condition: <span class="condition currentTimeAndWeatherSection"></span></div>
-                <div class="currentTimeAndWeatherSection">Temperature: <span class="temp currentTimeAndWeatherSection"></span></div>
-            </div>
-            </div>
-        </div>
         </div>
     </div>
     <div class="uk-container uk-container-center uk-margin-bottom uk-height-medium uk-padding-bottom-large" data-uk-grid-margin>
-    <h2 class="title2">Summary of <span class="header"></span></h2>
-    <div class="js-wrapper uk-panel uk-width-1-1 uk-height-max-large stateInformation">
-        <div uk-overflow-auto="selContainer: .uk-height-medium; selContent: .js-wrapper" class="uk-margin">
-          <img class=" flagImage uk-align-left uk-margin-remove-adjacent" src="" width="300" height="auto" alt="State-Flag">
-          <p class="info funFont1"></p>
+        <h2 class="title2">Summary of <span class="header"></span></h2>
+        <div class="js-wrapper uk-panel uk-width-1-1 uk-height-max-large stateInformation">
+            <div uk-overflow-auto="selContainer: .uk-height-medium; selContent: .js-wrapper" class="uk-margin">
+                <img class=" flagImage uk-align-left uk-margin-remove-adjacent" src="" width="300" height="auto" alt="State-Flag">
+                <p class="info funFont1"></p>
+            </div>
         </div>
-      </div>
     </div>      
-    <div class="uk-width-1-1 uk-margin-medium-top uk-margin-left uk-margin-right">
-       <div>
-           <h2 class="title2" style="padding-top: 1.5em; height: 1em;">Pictures of <span class="header" ></span></h2>
-          <p class="subtitle-2"> Photo Courtesy  <a href="https://pixabay.com/">
+    <div class="uk-width-1-1 uk-margin-medium-top uk-margin-right">
+        <div>
+            <h2 class="title2" style="padding-top: 1.5em; height: 1em;">Pictures of <span class="header" ></span></h2>
+            <p class="subtitle-2"> Photo Courtesy  <a href="https://pixabay.com/">
             <img class="pixabayIcon" src="https://pixabay.com/static/img/public/medium_rectangle_b.png" alt="Pixabay">
-            </a></p></div>
-            <div class="uk-container uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="animation: scale">
-          <ul id="statePictureList" class="uk-slideshow-items uk-border-rounded">
-              <li>
-                <img src="https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1000" alt="no image available" uk-cover/>
-                <div class="uk-position-center uk-position-small uk-text-center">
-                  <h2 class="uk-margin-remove funFont3">
-                    Nothing to see here
-                  </h2>
-                </div>
-              </li>
-          </ul>
-   
-          <a class="uk-position-center-left uk-position-small uk-hidden-hover"  style="color:black; background-color: white; border-radius: .5em;" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-          <a class="uk-position-center-right uk-position-small uk-hidden-hover" style="color:black; background-color: white; border-radius: .5em;"  href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+            </a></p>
+        </div>
+        <div class="uk-container uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="animation: scale">
+            <ul id="statePictureList" class="uk-slideshow-items uk-border-rounded">
+                <li>
+                    <img src="https://images.pexels.com/photos/963486/pexels-photo-963486.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1000" alt="no image available" uk-cover/>
+                    <div class="uk-position-center uk-position-small uk-text-center">
+                        <h2 class="uk-margin-remove funFont3">
+                            Nothing to see here
+                        </h2>
+                    </div>
+                </li>
+            </ul>
+            <a class="uk-position-center-left uk-position-small uk-hidden-hover"  style="color:black; background-color: white; border-radius: .5em;" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small uk-hidden-hover" style="color:black; background-color: white; border-radius: .5em;"  href="#" uk-slidenav-next uk-slideshow-item="next"></a>
         </div>
     </div>
     <div class="uk-container uk-flex uk-flex-center">
         <div
-        class="uk-grid-medium uk-child-width-expand@s uk-text-center uk-width-1-1 uk-margin-top uk-margin-bottom uk-grid-small uk-flex-around " style="margin-left: 0 !important;"
+        class="uk-grid-medium uk-child-width-expand@s uk-text-center uk-width-1-1 uk-margin-top uk-margin-bottom uk-grid-small uk-flex-around "style="margin-left: 0 !important; padding-left: o !important;"
         uk-grid>   
             <div>
                 <h2 class="title2">Fun Facts About <span class="header"></span></h2>
@@ -107,12 +107,12 @@
             </div>
             <div class="uk-width-1-3@s" uk-toggle="target: .toggle-card3; animation: uk-animation-fade; queued: true; duration: 300" class="uk-animation-hover">
                 <div class="uk-animation-shake toggle-card3 uk-card uk-card-default uk-card-body custom-bg-color3 uk-border-rounded" hidden>
-                <h3 class="uk-card-title uk-text-bolder">State Flower</h3>
-                <p class="uk-text-bold custom-para-color state-flower"></p>
+                    <h3 class="uk-card-title uk-text-bolder">State Flower</h3>
+                    <p class="uk-text-bold custom-para-color state-flower"></p>
                 </div>
                 <div class="uk-animation-shake toggle-card3 uk-card uk-card-primary uk-card-body custom-bg-color3 uk-border-rounded" >
-                <h3 class="uk-card-title"></h3>
-                <p></p>
+                    <h3 class="uk-card-title"></h3>
+                    <p></p>
                 </div>
             </div>
             <div class="uk-width-1-3@s" uk-toggle="target: .toggle-card4; animation: uk-animation-fade; queued: true; duration: 300"  class="uk-animation-hover">
@@ -156,6 +156,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="uk-container-center uk-flex uk-flex-center">
+        <button class="uk-button uk-button-default uk-button-large funFont2 gobackbtn">Go Back</button>
     </div>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="

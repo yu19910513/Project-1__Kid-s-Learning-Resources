@@ -14,7 +14,6 @@ $('.eventBtn').on("click", function(event) {
 //dropdown list
 $('a').on("click", function(event) {
   var stateName = event.target.text;
-  console.log(event.target.text);
   localStorage.setItem('stateVisited', stateName);
   localStorage.setItem(stateName, stateName);
 });
@@ -92,5 +91,4 @@ $('a').on("click", function(event) {
   function clearFunction (){
     localStorage.clear();
     $('.passport').children().remove();
-    // location.reload()
   }

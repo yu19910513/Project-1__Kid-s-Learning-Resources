@@ -11,6 +11,29 @@ body {
     background-color: black;
 }
 
+audio {
+    transform: scale(.5);
+    margin-top: 90px;
+    border: thin grey solid;
+    border-radius: 1.75em;
+
+}
+
+audio:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(2px 3px 3px #333);
+}
+    
+@media only screen and (max-width: 425px) {
+    audio {
+        visibility: hidden;
+        margin-top: 70px;
+    }
+    body {
+        font-size: .5rem;
+    }
+  }
+
 #map {
     max-height: 800px;
     width: auto;
@@ -38,8 +61,7 @@ p {
 }
 
 #searchHistory img{
-   max-width: 100px; 
-   height: auto;
+   max-width: 125px; 
    opacity: 1;
 }
 
@@ -67,7 +89,7 @@ p {
     border-radius: 2em;
     z-index: 2;
     box-shadow: 0 0 10px black;
-    margin: 2em;
+    margin: 3em;
 }
 
 .passportItem {
